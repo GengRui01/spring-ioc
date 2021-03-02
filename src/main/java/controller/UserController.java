@@ -1,7 +1,7 @@
 package controller;
 
+import org.springframework.context.ApplicationContext;
 import services.UserService;
-import services.impl.UserServiceImpl;
 import vo.UserVo;
 
 /**
@@ -12,10 +12,10 @@ import vo.UserVo;
 public class UserController {
     private UserService userService;
 
-    public UserVo getVo(Integer id) {
-        // 手动实例化Service
-        userService = new UserServiceImpl();
-        // 执行Service层方法并返回
-        return userService.getVo(id);
+    public UserVo getVo(Integer id, ApplicationContext context) {
+        // 从Spring容器拿Service
+        userService = (UserService) context.getBean("userService");
+        // 执行Service层方法，因为之后还需要用到context对象，故下传
+        return userService.getVo(id, context);
     }
 }

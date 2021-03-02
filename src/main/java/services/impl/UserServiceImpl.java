@@ -1,8 +1,8 @@
 package services.impl;
 
 import dao.UserDao;
-import dao.impl.UserDaoImpl;
 import entity.User;
+import org.springframework.context.ApplicationContext;
 import services.UserService;
 import vo.UserVo;
 
@@ -14,9 +14,9 @@ import vo.UserVo;
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
-    public UserVo getVo(Integer id) {
-        // 手动实例化Dao
-        userDao = new UserDaoImpl();
+    public UserVo getVo(Integer id, ApplicationContext context) {
+        // 从Spring容器拿Dao
+        userDao = (UserDao) context.getBean("userDao");
         // 执行Dao层方法
         User user = userDao.getEntity(id);
         // 省略业务逻辑处理。。。

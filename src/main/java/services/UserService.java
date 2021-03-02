@@ -1,5 +1,6 @@
 package services;
 
+import org.springframework.context.ApplicationContext;
 import vo.UserVo;
 
 /**
@@ -8,5 +9,5 @@ import vo.UserVo;
  * @Author GengRui
  */
 public interface UserService {
-    UserVo getVo(Integer id);
+    UserVo getVo(Integer id, ApplicationContext context);
 }
