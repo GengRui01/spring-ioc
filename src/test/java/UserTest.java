@@ -15,7 +15,7 @@ public class UserTest {
         // 从Spring容器拿Controller
         UserController userController = (UserController) context.getBean("userController");
         // 执行Controller层方法，因为之后还需要用到context对象，故下传
-        UserVo userVo = userController.getVo(1, context);
+        UserVo userVo = userController.getVo(1);
         System.out.println(userVo);
     }
 }

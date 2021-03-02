@@ -2,7 +2,8 @@ package services.impl;
 
 import dao.UserDao;
 import entity.User;
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import services.UserService;
 import vo.UserVo;
@@ -14,11 +15,12 @@ import vo.UserVo;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+    // 改为自动注入并指定需要注入的实例id
+    @Autowired
+    @Qualifier("userDaoImpl")
     private UserDao userDao;
 
-    public UserVo getVo(Integer id, ApplicationContext context) {
-        // 从Spring容器拿Dao
-        userDao = (UserDao) context.getBean("userDao");
+    public UserVo getVo(Integer id) {
         // 执行Dao层方法
         User user = userDao.getEntity(id);
         // 省略业务逻辑处理。。。

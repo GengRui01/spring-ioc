@@ -1,6 +1,6 @@
 package controller;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import services.UserService;
 import vo.UserVo;
@@ -12,12 +12,11 @@ import vo.UserVo;
  */
 @Controller
 public class UserController {
+    // 改为自动注入
+    @Autowired
     private UserService userService;
 
-    public UserVo getVo(Integer id, ApplicationContext context) {
-        // 从Spring容器拿Service
-        userService = (UserService) context.getBean("userService");
-        // 执行Service层方法，因为之后还需要用到context对象，故下传
-        return userService.getVo(id, context);
+    public UserVo getVo(Integer id) {
+        return userService.getVo(id);
     }
 }

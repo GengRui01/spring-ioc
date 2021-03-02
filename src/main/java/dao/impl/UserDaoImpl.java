@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
  * @Description User模块Dao层实现类
  * @Author GengRui
  */
-@Repository("userDao")
+// 改为默认bean id“userDaoImpl”
+@Repository
 public class UserDaoImpl implements UserDao {
     public User getEntity(Integer id) {
         // 此处应该从数据库查询值 方便起见直接返回一个固定对象
