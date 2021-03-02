@@ -1,6 +1,7 @@
 package controller;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
 import services.UserService;
 import vo.UserVo;
 
@@ -9,6 +10,7 @@ import vo.UserVo;
  * @Description User模块Controller层
  * @Author GengRui
  */
+@Controller
 public class UserController {
     private UserService userService;
 

@@ -3,6 +3,7 @@ package services.impl;
 import dao.UserDao;
 import entity.User;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 import services.UserService;
 import vo.UserVo;
 
@@ -11,6 +12,7 @@ import vo.UserVo;
  * @Description User模块Service层实现类
  * @Author GengRui
  */
+@Service("userService")
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
